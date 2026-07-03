@@ -2,7 +2,7 @@
 
 Refine is a tool/skill/methodology for iteratively improving a repository. For now, this will focus on code, but the idea is you use Refine on a repository you own and leave it to improve it automatically and agentically in an opinionated way.
 
-Refine is packaged as a Claude Code skill: it gets imported into a target repository as flat files (a `SKILL.md` plus the `.refine/` backlog) and autonomously improves that repository in a loop, in the spirit of [karpathy/autoresearch](https://github.com/karpathy/autoresearch). Refine is also used to refine itself — this repository is its own first target.
+Refine is packaged as a Claude Code skill: it gets imported into a target repository as flat files (`.claude/skills/refine/SKILL.md` plus the `.refine/` backlog) and autonomously improves that repository in a loop, in the spirit of [karpathy/autoresearch](https://github.com/karpathy/autoresearch). Refine is also used to refine itself — this repository is its own first target.
 
 ## The Core Loop
 
@@ -44,4 +44,4 @@ This README is context. [CLAUDE.md](CLAUDE.md) is imperatives and directions.
 
 ## Current State
 
-No code yet — this README, CLAUDE.md, and the `.refine/` backlog files. Packaging (Claude Code skill) and model selection are decided; the `SKILL.md` itself is not yet scaffolded. Refine is dogfooding: this repository is its own first target.
+The skill is scaffolded at `.claude/skills/refine/SKILL.md` and encodes the loop, backlog format, checkpoint, and model selection. Not yet defined: the concrete analysis phase, the diminishing-returns criterion, and the installation story (all in the backlog). Refine is dogfooding: this repository is its own first target.

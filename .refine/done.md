@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Scaffold the Refine skill (SKILL.md)
+
+- **type:** feature
+- **impact:** high — turns the packaging and model-selection decisions into an invocable artifact
+- **effort:** medium
+- **resolution:** Created `.claude/skills/refine/SKILL.md` encoding the full loop (select → execute → record → commit → analyze → checkpoint → stop), the backlog format (titled headings, file order is priority), the checkpoint rules, and the task→model mapping. Invocable as `/refine` in this repo and copyable into target repos. Produced by this iteration's analysis pass and executed immediately, so it never sat in backlog.md.
+
 ### Ask the user between work items whether to continue or add a backlog item
 
 - **type:** feature

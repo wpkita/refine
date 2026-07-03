@@ -4,13 +4,6 @@ Candidate improvements, one per entry, ordered by priority (topmost is next). It
 
 ## Items
 
-### Define the diminishing-returns stopping criterion
-
-- **type:** feature
-- **impact:** high — "knows when to stop" is a design principle with no mechanism behind it
-- **effort:** medium
-- **notes:** Define concrete signals: e.g., analysis passes yielding only low-impact candidates for N consecutive iterations, or the backlog's best item falling below an impact threshold. This is the Opus-evaluated judgment per the model-selection decision.
-
 ### Define the installation story
 
 - **type:** feature

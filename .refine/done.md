@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Define the diminishing-returns stopping criterion
+
+- **type:** feature
+- **impact:** high — "knows when to stop" is a design principle with no mechanism behind it
+- **effort:** medium
+- **resolution:** Added a "Stopping Criterion" section to SKILL.md. Diminishing returns = the best available work is no longer worth an iteration; evaluated by Opus after every Analyze pass. Fires when two consecutive Analyze passes yield only low-impact candidates (or none), or when the last three completed iterations were all low-impact. An empty backlog is not a stopping signal (it triggers Analyze). Stopping reports rather than halts: summarize completed items, name the fired signal, leave low-impact candidates in the backlog. Bias toward stopping — restarting is cheap, unattended low-value looping is not.
+
 ### Define the analysis phase concretely
 
 - **type:** feature

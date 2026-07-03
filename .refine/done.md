@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Validate the install prompt end-to-end in a scratch target repo
+
+- **type:** feature
+- **impact:** low — the install is a single file copy, so failure risk is small, but it had never actually been exercised
+- **effort:** small
+- **resolution:** Ran the install in a scratch repo. Mechanics pass: SKILL.md lands at `.claude/skills/refine/SKILL.md` with valid frontmatter (name + description, which is what skill discovery requires), `.refine/backlog.md` and `.refine/done.md` seed cleanly, and the install commit succeeds. The GitHub fetch step fails: https://github.com/wpkita/refine returns 404 unauthenticated, so the prompt as written cannot work from a fresh target session — validated from the local clone instead, and filed the 404 as a high-impact bug at the top of the backlog. The item earned its keep: "never actually exercised" was hiding a real blocker.
+
 ### Give Analyze a lens catalog: what to look for, when it applies, and Refine's stance
 
 - **type:** feature

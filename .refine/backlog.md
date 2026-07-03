@@ -4,12 +4,12 @@ Candidate improvements, one per entry, ordered by priority (topmost is next). It
 
 ## Items
 
-### Validate the install prompt end-to-end in a scratch target repo
+### Fix the install path: the GitHub source URL 404s publicly
 
-- **type:** feature
-- **impact:** low — the install is a single file copy, so failure risk is small, but it has never actually been exercised
+- **type:** bug
+- **impact:** high — the README install prompt tells a fresh session to copy SKILL.md from https://github.com/wpkita/refine, but that URL returns 404 unauthenticated (repo private or unpublished); the installation story is the doorway to the whole vision and is currently broken for any target session without push-level access
 - **effort:** small
-- **notes:** Create a throwaway repo, run the README's install prompt, confirm the skill loads and the first Analyze pass populates the seeded backlog.
+- **notes:** Found by the install-prompt validation. The real fix is the user making wpkita/refine public — Refine must not flip repo visibility unilaterally. The executable part: update README's Installation section to state the access requirement honestly (and/or offer a local-clone source as fallback) so the docs don't overpromise, and surface the make-it-public ask to the user at the next checkpoint.
 
 ### Update the state diagram's checkpoint wording
 

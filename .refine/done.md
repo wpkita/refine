@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Define the installation story
+
+- **type:** feature
+- **impact:** medium — packaging is decided (skill) but there was no documented way to get Refine into a target repo
+- **effort:** small
+- **resolution:** Installation is a prompt, not a script — the simplest thing that works from a phone-started remote session. The user tells Claude Code in the target repo to copy `.claude/skills/refine/SKILL.md` from this repo, seed empty `.refine/backlog.md` and `.refine/done.md`, and commit; the skill's Analyze phase populates the backlog on first run. Rejected a bootstrap script (nothing to script beyond a copy) and marketplace distribution (deferred until the skill outgrows a single file). Documented in README → Installation.
+
 ### Define the diminishing-returns stopping criterion
 
 - **type:** feature

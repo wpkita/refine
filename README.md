@@ -54,10 +54,18 @@ Refine maintains its backlog as flat files committed to the target repo: `.refin
 
 Between work items, Refine checkpoints: continue to the next item, or take a new item from the user first? New items are slotted into the priority order by Refine's own judgment, and an unanswered checkpoint defaults to continuing — it never blocks an unattended loop.
 
+## Installation
+
+Refine is flat files, so installation is copying them — driven by a prompt, not a script, so it works from a phone-started remote session. In a Claude Code session in the target repo:
+
+> Install Refine: copy `.claude/skills/refine/SKILL.md` from https://github.com/wpkita/refine, seed empty `.refine/backlog.md` and `.refine/done.md`, and commit.
+
+The skill's Analyze phase populates the empty backlog on first run. Plugin-marketplace distribution may come later if the skill outgrows a single file.
+
 ## Documentation Convention
 
 This README is context. [CLAUDE.md](CLAUDE.md) is imperatives and directions.
 
 ## Current State
 
-The skill is scaffolded at `.claude/skills/refine/SKILL.md` and encodes the loop, backlog format, checkpoint, analysis phase, stopping criterion, and model selection. Not yet defined: the installation story (in the backlog). Refine is dogfooding: this repository is its own first target.
+The skill is scaffolded at `.claude/skills/refine/SKILL.md` and encodes the loop, backlog format, checkpoint, analysis phase, stopping criterion, and model selection. Installation is defined (prompt-driven copy). The backlog is empty — the next session's Analyze pass repopulates it. Refine is dogfooding: this repository is its own first target.

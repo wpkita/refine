@@ -21,17 +21,29 @@ Improve this repository one focused change at a time, working from the priority-
 
 Run when the backlog is empty, or when instructed to refresh it.
 
-**Deterministic checks** (delegate to Haiku subagents):
+**Recon first** (Haiku). Establish what kind of repo this is: languages, test and lint tooling, lockfiles and manifests, databases, whether it ships to users, whether it is a published package. Read the target repo's own CLAUDE.md and README — they are the source of repo-specific values, so no separate Refine configuration exists or should. Then select the applicable lenses from the catalog below. Never run the whole catalog: an inapplicable lens produces noise candidates and burns unattended budget.
 
-- Run the repo's test suite and linters, if present. Failures become `type: bug` candidates.
-- Scan for TODO/FIXME/XXX markers.
-- Detect doc drift: docs referencing files, commands, or states that no longer exist.
-- Flag dead code and unused dependencies where the repo's tooling supports it.
+**Lens catalog.** Each lens says how to check, when it applies, and Refine's stance — what "better" means. Stances are Refine's opinions; never ask the user to configure thresholds. Mechanical checks delegate to Haiku; judgment lenses run on Sonnet.
 
-**Qualitative review** (Sonnet):
+| Lens | Check | Applies when | Stance |
+| --- | --- | --- | --- |
+| Failing tests / linters | Run the suite and linters | Test or lint config exists | A red suite outranks every feature; failures are `type: bug` |
+| TODO/FIXME/XXX markers | Grep | Always | An old marker is debt: fix it or delete it |
+| Doc drift | Compare docs to files, commands, and states they reference | Docs exist | Docs that lie are worse than no docs |
+| Dead code / unused deps | Repo's own tooling where it supports it | Tooling exists | Deletion is improvement |
+| Test coverage gaps | Coverage tooling, or judgment over core paths | A test suite exists | Cover core behavior; a numeric target is false precision |
+| Missing integration / e2e tests | Inspect the test pyramid's shape | User-facing flows exist | Every critical flow deserves one end-to-end proof |
+| Committed secrets | Secret scanner or credential-pattern grep over tree and history | Always | Any committed secret is a bug: rotate, then purge |
+| Vulnerable dependencies | `npm audit`, `pip-audit`, `osv-scanner`, or ecosystem equivalent | A manifest or lockfile exists | Known CVEs in shipped dependencies are bugs |
+| Deprecated calls | Compiler/linter deprecation warnings, dependency changelogs | Dependencies with deprecation cycles | Migrate on your schedule, not the breakage's |
+| Naming and casing consistency | Read core files | Always | The language's dominant convention wins; consistency beats preference |
+| Misspellings | `codespell`/`typos` or a read-through | Always | User-facing text first, identifiers second |
+| Slow paths | Profile, or inspect hot loops and N+1 patterns | Perf-sensitive paths exist | Measure before optimizing; flag only what a user would feel |
+| Missing DB indexes | Schema vs. query patterns | The repo owns a database schema | Index what queries filter and join on |
+| Architecture / readability | Judgment pass over core or recently-touched files | Always | Code is read more than written |
+| Gap analysis | Decisions without artifacts; principles without mechanisms | Always | A stated principle with no mechanism is a bug in the project, not the prose |
 
-- Architecture and readability pass over core or recently-touched files.
-- Gap analysis: decisions made but not yet turned into artifacts; stated principles with no mechanism behind them.
+Lenses surface candidates; they never set priority. The scoring rubric prices every finding, which is what makes subjective lenses safe — a finding that isn't really a problem in this repo scores low and sinks. The catalog is a floor, not a ceiling: recon may improvise a repo-specific lens when the repo's nature demands one.
 
 **Scoring rubric.** Rate each candidate's `impact` (high/medium/low — user-visible value, or how much it unblocks future iterations) and `effort` (small/medium/large — expected size of the iteration). Qualitative ratings only; numeric scores are false precision. Priority order: impact first, lower effort breaks ties, bugs beat features on equal footing. An item too large for one iteration must be split before it enters the backlog.
 

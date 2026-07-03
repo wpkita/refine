@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Give Analyze a lens catalog: what to look for, when it applies, and Refine's stance
+
+- **type:** feature
+- **impact:** high — the Analysis Phase hardcoded four deterministic checks and two qualitative passes; arbitrary target repos need far more dimensions, and candidate quality bounds everything downstream
+- **effort:** medium
+- **resolution:** Rewrote SKILL.md's Analysis Phase around a fifteen-lens catalog (tests, TODO markers, doc drift, dead code, coverage gaps, e2e gaps, secrets, vulnerable deps, deprecated calls, naming, misspellings, slow paths, DB indexes, architecture, gap analysis), absorbing the old deterministic/qualitative sections. Each lens carries a check, an "applies when" condition, and a one-line stance — the stances are where the opinionated principle is encoded. A Haiku recon pass identifies what the repo is and selects only applicable lenses; the target's own CLAUDE.md/README serve as repo-specific values, so no Refine config surface exists. Lenses surface, the scoring rubric prices — which is what makes subjective lenses safe. Catalog is a floor, not a ceiling: recon may improvise repo-specific lenses. Rejected: per-repo enabled-checks config (defeats unattended + opinionated), numeric targets (false precision), exhaustive every-pass runs (cost, noise).
+
 ### Define the unattended-checkpoint mechanism
 
 - **type:** feature

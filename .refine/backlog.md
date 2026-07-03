@@ -4,13 +4,6 @@ Candidate improvements, one per entry, ordered by priority (topmost is next). It
 
 ## Items
 
-### Give Analyze a lens catalog: what to look for, when it applies, and Refine's stance
-
-- **type:** feature
-- **impact:** high — the Analysis Phase hardcodes four deterministic checks and two qualitative passes; arbitrary target repos need far more dimensions (coverage, secrets, vulnerable deps, deprecated calls, naming consistency, misspellings, slow paths, missing indexes, e2e gaps), and candidate quality bounds everything downstream
-- **effort:** medium
-- **notes:** Add a lens catalog to SKILL.md's Analysis Phase. Each lens carries: how to check, an "applies when" condition, and a one-line stance on what "better" means (this is where the opinionated principle gets encoded — never ask the user to configure thresholds). Analyze starts with a cheap Haiku recon pass ("what kind of repo is this?") and selects only the applicable lenses — never runs the whole catalog. Valuation stays with the existing scoring rubric: lenses surface candidates, the rubric prices them, so subjective lenses are fine. The target repo's own CLAUDE.md/README are read as the source of repo-specific values — customization with no new config surface. Rejected: per-repo enabled-checks config, numeric targets (false precision), exhaustive every-pass runs (cost, noise).
-
 ### Validate the install prompt end-to-end in a scratch target repo
 
 - **type:** feature

@@ -6,7 +6,7 @@ Refine is packaged as a Claude Code skill: it gets imported into a target reposi
 
 ## The Core Loop
 
-1. Run deterministic and non-deterministic, quantitative and qualitative analyses on the target repository.
+1. Run deterministic and non-deterministic, quantitative and qualitative analyses on the target repository, chosen from a lens catalog scoped to what the repo actually is (see the skill's Analysis Phase).
 2. Choose the single biggest bang-for-the-buck improvement.
 3. Apply that one improvement.
 4. Repeat until diminishing returns are detected or the user stops it.
@@ -68,4 +68,4 @@ This README is context. [CLAUDE.md](CLAUDE.md) is imperatives and directions.
 
 ## Current State
 
-The skill is scaffolded at `.claude/skills/refine/SKILL.md` and is the single source of truth for the loop — CLAUDE.md defers to it. Installation is defined (prompt-driven copy) and the repo is MIT-licensed. The last run stopped on diminishing returns, leaving two low-impact candidates in the backlog. Refine is dogfooding: this repository is its own first target.
+The skill is scaffolded at `.claude/skills/refine/SKILL.md` and is the single source of truth for the loop — CLAUDE.md defers to it. Its Analyze phase is driven by a lens catalog: a recon pass identifies what the repo is, selects only the applicable lenses, and reads the target's own CLAUDE.md/README for repo-specific values instead of any Refine config. Installation is defined (prompt-driven copy) and the repo is MIT-licensed. Two low-impact candidates remain in the backlog. Refine is dogfooding: this repository is its own first target.

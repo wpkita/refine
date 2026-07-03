@@ -4,13 +4,6 @@ Candidate improvements, one per entry, ordered by priority (topmost is next). It
 
 ## Items
 
-### Add a LICENSE
-
-- **type:** feature
-- **impact:** medium — the repo is public and the vision is other people importing Refine; no license means all rights reserved and blocks that reuse
-- **effort:** small
-- **notes:** MIT is the obvious default for a tool meant to be copied into other repos, but license choice is ultimately the user's legal call — confirm at the checkpoint before committing one.
-
 ### Define the unattended-checkpoint mechanism
 
 - **type:** feature

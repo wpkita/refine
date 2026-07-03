@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Add a LICENSE
+
+- **type:** feature
+- **impact:** medium — the repo is public and the vision is other people importing Refine; no license meant all rights reserved and blocked that reuse
+- **effort:** small
+- **resolution:** MIT, confirmed by the user at the checkpoint (the one call the loop doesn't make unilaterally — licensing is legal, not technical). Copyright 2026 Will Kita.
+
 ### Deduplicate the loop: CLAUDE.md defers to SKILL.md
 
 - **type:** bug

@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Define the unattended-checkpoint mechanism
+
+- **type:** feature
+- **impact:** medium — unattended operation is the primary use case, but the between-item checkpoint had no way to "time out": an interactive question blocks forever
+- **effort:** medium
+- **resolution:** Interruption is the checkpoint. Interactive sessions ask as before; unattended runs (scheduled/headless, or any session where a checkpoint went unanswered) never ask — the checkpoint is stated in the iteration summary and the loop continues immediately, with any arriving user message counting as the answer. One unanswered checkpoint degrades the session to unattended. Rejected timeout-based asking (no reliable mechanism) and every-N-iterations checkpoints (arbitrary). Encoded in SKILL.md step 6 and README.
+
 ### Add a LICENSE
 
 - **type:** feature

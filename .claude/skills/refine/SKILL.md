@@ -14,7 +14,7 @@ Improve this repository one focused change at a time, working from the priority-
 3. **Record.** Move the completed item from `.refine/backlog.md` to `.refine/done.md`, appending a `resolution:` line stating what was decided or built and why.
 4. **Commit.** One commit per iteration, containing the improvement and every backlog mutation it caused. Never add co-authoring; leave the user's configured Git name and email.
 5. **Analyze (as needed).** Run the Analysis Phase (below) and append its candidates to the backlog in priority order.
-6. **Checkpoint.** Ask the user: continue to the next item, or add a new item first? If they add one, slot it into priority order yourself — never ask where it goes. If the session is unattended or the user does not respond, continue. The checkpoint must never block the loop.
+6. **Checkpoint.** In an interactive session, ask the user: continue to the next item, or add a new item first? If they add one, slot it into priority order yourself — never ask where it goes. In an unattended run (scheduled/headless, or a previous checkpoint went unanswered), do not ask: state the checkpoint in the iteration summary and continue immediately — interruption is the checkpoint, and a user message arriving at any time counts as its answer. One unanswered checkpoint degrades the session to unattended; never ask into the void, and never block the loop.
 7. **Stop** when the user says so, or when the Stopping Criterion (below) fires.
 
 ## Analysis Phase

@@ -52,7 +52,7 @@ The mapping lives in per-agent frontmatter (`model:` field) in the agent definit
 
 Refine maintains its backlog as flat files committed to the target repo: `.refine/backlog.md` holds candidate improvements (bugs and features compete in one queue, file order is priority order), and `.refine/done.md` holds completed items. Git history is the audit trail — every backlog mutation lands in the same commit as the improvement that consumed it, and the files survive ephemeral remote sessions because they travel with the clone.
 
-Between work items, Refine checkpoints: continue to the next item, or take a new item from the user first? New items are slotted into the priority order by Refine's own judgment, and an unanswered checkpoint defaults to continuing — it never blocks an unattended loop.
+Between work items, Refine checkpoints: continue to the next item, or take a new item from the user first? New items are slotted into the priority order by Refine's own judgment. In unattended runs the checkpoint is never asked — the loop continues immediately, and interrupting it is the checkpoint.
 
 ## Installation
 
@@ -68,4 +68,4 @@ This README is context. [CLAUDE.md](CLAUDE.md) is imperatives and directions.
 
 ## Current State
 
-The skill is scaffolded at `.claude/skills/refine/SKILL.md` and is the single source of truth for the loop — CLAUDE.md defers to it. Installation is defined (prompt-driven copy) and the repo is MIT-licensed. The backlog holds one analysis-pass candidate: the unattended-checkpoint mechanism. Refine is dogfooding: this repository is its own first target.
+The skill is scaffolded at `.claude/skills/refine/SKILL.md` and is the single source of truth for the loop — CLAUDE.md defers to it. Installation is defined (prompt-driven copy) and the repo is MIT-licensed. The backlog is empty — the next session's Analyze pass repopulates it. Refine is dogfooding: this repository is its own first target.

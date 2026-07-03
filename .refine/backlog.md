@@ -4,14 +4,7 @@ Candidate improvements, one per entry. The loop's analysis phase appends candida
 
 ## Items
 
-### 1. Decide if Claude skill or other
-
-- **type:** feature
-- **impact:** high — packaging determines how Refine is imported into target repos and how it runs unattended
-- **effort:** medium
-- **notes:** Options include a Claude Code skill (SKILL.md), a plugin, or something else. The unattended phone-driven use case is the deciding constraint.
-
-### 2. Decide model selection per task type
+### 1. Decide model selection per task type
 
 - **type:** feature
 - **impact:** high — model choice drives cost and quality of every loop iteration, and unattended loops multiply both

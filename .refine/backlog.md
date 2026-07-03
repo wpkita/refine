@@ -4,6 +4,13 @@ Candidate improvements, one per entry, ordered by priority (topmost is next). It
 
 ## Items
 
+### Package Refine as a plugin now that it has outgrown a single file
+
+- **type:** feature
+- **impact:** medium — README's stated trigger for plugin distribution ("if the skill outgrows a single file") has fired: the bundle is now one skill plus three agents. A plugin gives two-command install (`/plugin marketplace add wpkita/refine`, `/plugin install refine@refine`), versioned updates, and keeps engine files out of target repos — only `.refine/` state travels with the target
+- **effort:** medium
+- **notes:** Add `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`; move the skill and agents to plugin-layout dirs (`skills/refine/SKILL.md`, `agents/*.md`). Constraints: dogfooding must keep working (this repo loads its own skill — add the marketplace from the local path, or keep `.claude/` copies in sync); ephemeral remote sessions need the marketplace known (target repos can commit plugin config in `.claude/settings.json`); README's Installation section keeps the prompt install as the zero-infra fallback and gains the plugin path. Blocked-ish on the repo being public for the GitHub marketplace-add path, but the packaging work itself isn't blocked.
+
 ### Exercise the bundled agents in a real delegated Analyze pass
 
 - **type:** feature

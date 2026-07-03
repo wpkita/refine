@@ -6,7 +6,7 @@ Refine is packaged as a Claude Code skill: it gets imported into a target reposi
 
 ## The Core Loop
 
-1. Run deterministic and non-deterministic, quantitative and qualitative analyses on the target repository, chosen from a lens catalog scoped to what the repo actually is (see the skill's Analysis Phase).
+1. Run deterministic and non-deterministic, quantitative and qualitative analyses on the target repository, chosen from a lens catalog scoped to what the repo actually is, and graded against a ranked 50-rung maturity ladder (see the skill's Analysis Phase and `maturity.md`).
 2. Choose the single biggest bang-for-the-buck improvement.
 3. Apply that one improvement.
 4. Repeat until diminishing returns are detected or the user stops it.
@@ -57,9 +57,9 @@ Between work items, Refine checkpoints: continue to the next item, or take a new
 
 Refine is flat files, so installation is copying them — driven by a prompt, not a script, so it works from a phone-started remote session. In a Claude Code session in the target repo:
 
-> Install Refine: copy `.claude/skills/refine/SKILL.md` and `.claude/agents/refine-*.md` from https://github.com/wpkita/refine, seed empty `.refine/backlog.md` and `.refine/done.md`, and commit.
+> Install Refine: copy the `.claude/skills/refine/` directory (SKILL.md and maturity.md) and `.claude/agents/refine-*.md` from https://github.com/wpkita/refine, seed empty `.refine/backlog.md` and `.refine/done.md`, and commit.
 
-The skill's Analyze phase populates the empty backlog on first run. Plugin-marketplace distribution may come later if the skill outgrows a single file.
+The skill's Analyze phase populates the empty backlog on first run. The skill has outgrown a single file, so plugin-marketplace distribution is queued in the backlog.
 
 ## Documentation Convention
 
@@ -67,4 +67,4 @@ This README is context. [CLAUDE.md](CLAUDE.md) is imperatives and directions.
 
 ## Current State
 
-The skill lives at `.claude/skills/refine/SKILL.md` and is the single source of truth for the loop — CLAUDE.md defers to it. Its Analyze phase is driven by a lens catalog: a recon pass identifies what the repo is, selects only the applicable lenses, and reads the target's own CLAUDE.md/README for repo-specific values instead of any Refine config. The model mapping is real: three bundled agents (`.claude/agents/refine-*.md`) carry it. Installation is defined (prompt-driven copy) and the repo is MIT-licensed. `.refine/backlog.md` holds what's queued; `.refine/done.md` is the audit trail. Refine is dogfooding: this repository is its own first target.
+The skill lives at `.claude/skills/refine/` (SKILL.md plus the maturity ladder in maturity.md) and is the single source of truth for the loop — CLAUDE.md defers to it. Its Analyze phase is driven by a lens catalog: a recon pass identifies what the repo is, selects only the applicable lenses, and reads the target's own CLAUDE.md/README for repo-specific values instead of any Refine config. Findings are priced by the ladder's tiers — Tier 0 gates (secrets, license, CVEs) outrank everything, and enforcement beats documentation. The model mapping is real: three bundled agents (`.claude/agents/refine-*.md`) carry it. Installation is defined (prompt-driven copy) and the repo is MIT-licensed. `.refine/backlog.md` holds what's queued; `.refine/done.md` is the audit trail. Refine is dogfooding: this repository is its own first target.

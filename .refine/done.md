@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Integrate the ranked repo-maturity indicators into Analyze and scoring
+
+- **type:** feature
+- **impact:** high — the lens catalog said what to look for but had no cross-repo notion of what a mature repo *has*; the ladder gives Analyze a ranked checklist and gives scoring a principled impact anchor instead of per-finding intuition
+- **effort:** medium
+- **resolution:** Added `.claude/skills/refine/maturity.md`: fifty ranked rungs grouped into tiers (Tier 0 gates → foundation → enforcement/automation → code health → polish), ordered by the bias catastrophe > velocity > aesthetics. Wired it in as a new always-on lens (community rungs conditional on outside users), and bound three rules into the scoring rubric for all candidates: failing Tier 0 gates are top-of-backlog bugs nothing outranks; ladder gaps default to impact by tier, adjusted for repo type; enforcement beats documentation. Recon now reports repo shape (library/application/CLI/docs) since rank conditioning depends on it, and runs the machine-checkable rungs as predicates; judgment rungs go to Sonnet with an evidence requirement. Where a rung overlaps an existing lens, the lens stays the check and the ladder only supplies rank — no duplicate findings. The skill outgrowing a single file is acknowledged in README and strengthens the queued plugin-packaging item. User-directed at a checkpoint; executed immediately.
+
 ### Scaffold the bundled agent definitions the docs already promised
 
 - **type:** bug

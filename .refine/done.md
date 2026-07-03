@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Define the analysis phase concretely
+
+- **type:** feature
+- **impact:** high — the loop's step 1 is currently hand-wavy; candidate quality bounds everything downstream
+- **effort:** medium
+- **resolution:** Added an "Analysis Phase" section to SKILL.md. Deterministic checks (Haiku): test suite and linters (failures become bugs), TODO/FIXME scan, doc drift, dead code/unused deps. Qualitative review (Sonnet): architecture/readability pass, gap analysis of decisions without artifacts and principles without mechanisms. Scoring stays qualitative (high/medium/low impact, small/medium/large effort — numeric scores are false precision); priority is impact first, lower effort breaks ties, bugs beat features on equal footing; oversized items must be split before entering the backlog. A pass yielding only low-impact candidates raises the stopping question (criterion still a backlog item).
+
 ### Document the loop as a state machine, including the empty-backlog branch
 
 - **type:** feature

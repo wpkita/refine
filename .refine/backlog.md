@@ -4,13 +4,6 @@ Candidate improvements, one per entry, ordered by priority (topmost is next). It
 
 ## Items
 
-### Define the analysis phase concretely
-
-- **type:** feature
-- **impact:** high — the loop's step 1 is currently hand-wavy; candidate quality bounds everything downstream
-- **effort:** medium
-- **notes:** Specify which deterministic analyses run (tests, lint, dead code, TODO scan, doc drift) and which qualitative ones (architecture review, readability pass), plus the scoring rubric that turns findings into backlog entries with impact/effort ratings. Should map to the Haiku-for-exploration model decision.
-
 ### Define the diminishing-returns stopping criterion
 
 - **type:** feature

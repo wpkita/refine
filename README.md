@@ -60,4 +60,4 @@ This README is context. [CLAUDE.md](CLAUDE.md) is imperatives and directions.
 
 ## Current State
 
-The skill is scaffolded at `.claude/skills/refine/SKILL.md` and encodes the loop, backlog format, checkpoint, and model selection. Not yet defined: the concrete analysis phase, the diminishing-returns criterion, and the installation story (all in the backlog). Refine is dogfooding: this repository is its own first target.
+The skill is scaffolded at `.claude/skills/refine/SKILL.md` and encodes the loop, backlog format, checkpoint, analysis phase, and model selection. Not yet defined: the diminishing-returns criterion and the installation story (both in the backlog). Refine is dogfooding: this repository is its own first target.

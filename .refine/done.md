@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Decide model selection per task type
+
+- **type:** feature
+- **impact:** high — model choice drives cost and quality of every loop iteration, and unattended loops multiply both
+- **effort:** medium
+- **resolution:** Cheap models for constant mechanical work, strong models for rare high-stakes judgment. Haiku: backlog bookkeeping, broad repo exploration/analysis. Sonnet: candidate scoring, improvement selection, implementation (session default). Opus: diminishing-returns evaluation — runs at most once per iteration so cost is negligible, but a wrong stop/continue call is the most expensive mistake an unattended loop can make. The mapping lives in per-agent frontmatter (`model:` field) in the agent definitions the skill bundles; the orchestrating loop inherits the session model. See README.md → Model Selection.
+
 ### Decide if Claude skill or other
 
 - **type:** feature

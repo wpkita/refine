@@ -18,6 +18,20 @@ Refine is packaged as a Claude Code skill: it gets imported into a target reposi
 - **Unattended operation is the primary use case.** The user installs Refine into a personal repo, starts a remote session (e.g., from a phone), and walks away while the agent loops. Anything requiring the user to sit at a computer defeats the purpose.
 - **Knows when to stop.** Diminishing returns are a first-class stopping criterion, not an afterthought.
 
+## Model Selection
+
+Cheap models do the mechanical work that happens constantly; strong models make the judgment calls that are rare but expensive to get wrong.
+
+| Task | Model |
+| --- | --- |
+| Backlog bookkeeping (append, move, reformat items) | Haiku |
+| Broad repo exploration and analysis runs | Haiku |
+| Candidate scoring and improvement selection | Sonnet |
+| Implementing the improvement | Sonnet (session default) |
+| Diminishing-returns evaluation | Opus |
+
+The mapping lives in per-agent frontmatter (`model:` field) in the agent definitions the skill bundles; the orchestrating loop inherits the session model.
+
 ## The Backlog
 
 Refine maintains its backlog as flat files committed to the target repo: `.refine/backlog.md` holds candidate improvements (bugs and features compete in one queue), and `.refine/done.md` holds completed items. Git history is the audit trail — every backlog mutation lands in the same commit as the improvement that consumed it, and the files survive ephemeral remote sessions because they travel with the clone.
@@ -28,4 +42,4 @@ This README is context. [CLAUDE.md](CLAUDE.md) is imperatives and directions.
 
 ## Current State
 
-No code yet — this README, CLAUDE.md, and the `.refine/` backlog files. Packaging is decided (Claude Code skill); the `SKILL.md` itself is not yet scaffolded. Refine is dogfooding: this repository is its own first target.
+No code yet — this README, CLAUDE.md, and the `.refine/` backlog files. Packaging (Claude Code skill) and model selection are decided; the `SKILL.md` itself is not yet scaffolded. Refine is dogfooding: this repository is its own first target.

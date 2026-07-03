@@ -11,6 +11,22 @@ Refine is packaged as a Claude Code skill: it gets imported into a target reposi
 3. Apply that one improvement.
 4. Repeat until diminishing returns are detected or the user stops it.
 
+As a state machine:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Select
+    Select --> Execute: pop topmost item
+    Select --> Analyze: backlog empty
+    Analyze --> Select: candidates appended in priority order
+    Analyze --> [*]: only low-impact candidates — diminishing returns
+    Execute --> Record: move item to done.md, commit iteration
+    Record --> Checkpoint
+    Checkpoint --> Select: continue (default when unattended)
+    Checkpoint --> Select: user adds item — Refine slots it by judgment
+    Checkpoint --> [*]: user stops
+```
+
 ## Design Principles
 
 - **One improvement per iteration.** Each loop cycle produces exactly one focused change, not a batch.

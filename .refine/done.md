@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Document the loop as a state machine, including the empty-backlog branch
+
+- **type:** feature
+- **impact:** medium — makes the loop's control flow unambiguous, especially the backlog-empty → analyze transition and the never-block checkpoint defaults, which prose lists blur
+- **effort:** small
+- **resolution:** Added a Mermaid state diagram to README's Core Loop section (states: Select, Analyze, Execute, Record, Checkpoint; terminals: diminishing returns, user stop). Added the empty-backlog imperative to CLAUDE.md's bootup section; SKILL.md already carried the transition in its step 1. User-added at a checkpoint and slotted first by judgment: small effort, formalizes just-exercised behavior, and downstream backlog items can reference named states.
+
 ### Scaffold the Refine skill (SKILL.md)
 
 - **type:** feature

@@ -64,12 +64,11 @@ Items in `.refine/backlog.md` are titled `###` headings — no numbering; file o
 
 ## Model Selection
 
-When delegating to subagents, match the model to the work:
+When delegating, use the bundled agents in `.claude/agents/` — their frontmatter carries the model mapping:
 
-| Task | Model |
-| --- | --- |
-| Backlog bookkeeping (append, move, reformat) | Haiku |
-| Broad repo exploration and analysis runs | Haiku |
-| Candidate scoring and improvement selection | Sonnet |
-| Implementing the improvement | Sonnet (session default) |
-| Diminishing-returns evaluation | Opus |
+| Task | Agent | Model |
+| --- | --- | --- |
+| Repo recon, mechanical lens checks, backlog bookkeeping | `refine-recon` | Haiku |
+| Candidate scoring and improvement selection | `refine-scorer` | Sonnet |
+| Implementing the improvement | orchestrating session | session default |
+| Diminishing-returns evaluation | `refine-stopper` | Opus |

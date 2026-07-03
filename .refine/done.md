@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Scaffold the bundled agent definitions the docs already promised
+
+- **type:** bug
+- **impact:** medium — README and SKILL.md both claimed the model mapping "lives in per-agent frontmatter in the agent definitions the skill bundles," but no agent definitions existed; the gap-analysis lens's own stance applied: a stated mechanism with no artifact is a bug in the project
+- **effort:** medium
+- **resolution:** Created `.claude/agents/refine-recon.md` (Haiku — recon, mechanical lenses, backlog bookkeeping), `refine-scorer.md` (Sonnet — rubric scoring and selection), and `refine-stopper.md` (Opus — stopping-criterion verdicts, returns stop|continue plus the signal). Implementation stays with the orchestrating session at the session default. Updated both Model Selection tables to name the agents, extended the install prompt to copy `.claude/agents/refine-*.md`, and made README's Current State evergreen (pointing at the backlog files instead of restating their contents, which went stale every iteration). Found by this run's first lens-catalog Analyze pass — the catalog caught a gap the old checklist had missed twice; executed immediately, so it never sat in backlog.md.
+
 ### Update the state diagram's checkpoint wording
 
 - **type:** bug

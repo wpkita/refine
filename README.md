@@ -38,15 +38,14 @@ stateDiagram-v2
 
 Cheap models do the mechanical work that happens constantly; strong models make the judgment calls that are rare but expensive to get wrong.
 
-| Task | Model |
-| --- | --- |
-| Backlog bookkeeping (append, move, reformat items) | Haiku |
-| Broad repo exploration and analysis runs | Haiku |
-| Candidate scoring and improvement selection | Sonnet |
-| Implementing the improvement | Sonnet (session default) |
-| Diminishing-returns evaluation | Opus |
+| Task | Agent | Model |
+| --- | --- | --- |
+| Repo recon, mechanical lens checks, backlog bookkeeping | `refine-recon` | Haiku |
+| Candidate scoring and improvement selection | `refine-scorer` | Sonnet |
+| Implementing the improvement | orchestrating session | session default |
+| Diminishing-returns evaluation | `refine-stopper` | Opus |
 
-The mapping lives in per-agent frontmatter (`model:` field) in the agent definitions the skill bundles; the orchestrating loop inherits the session model.
+The mapping lives in per-agent frontmatter (`model:` field) in `.claude/agents/refine-*.md`, which install alongside the skill; the orchestrating loop inherits the session model.
 
 ## The Backlog
 
@@ -58,7 +57,7 @@ Between work items, Refine checkpoints: continue to the next item, or take a new
 
 Refine is flat files, so installation is copying them — driven by a prompt, not a script, so it works from a phone-started remote session. In a Claude Code session in the target repo:
 
-> Install Refine: copy `.claude/skills/refine/SKILL.md` from https://github.com/wpkita/refine, seed empty `.refine/backlog.md` and `.refine/done.md`, and commit.
+> Install Refine: copy `.claude/skills/refine/SKILL.md` and `.claude/agents/refine-*.md` from https://github.com/wpkita/refine, seed empty `.refine/backlog.md` and `.refine/done.md`, and commit.
 
 The skill's Analyze phase populates the empty backlog on first run. Caveat: this repo is not publicly readable yet, so the target session needs authenticated GitHub access to wpkita/refine — or a local clone to copy from — until the repo is made public. Plugin-marketplace distribution may come later if the skill outgrows a single file.
 
@@ -68,4 +67,4 @@ This README is context. [CLAUDE.md](CLAUDE.md) is imperatives and directions.
 
 ## Current State
 
-The skill is scaffolded at `.claude/skills/refine/SKILL.md` and is the single source of truth for the loop — CLAUDE.md defers to it. Its Analyze phase is driven by a lens catalog: a recon pass identifies what the repo is, selects only the applicable lenses, and reads the target's own CLAUDE.md/README for repo-specific values instead of any Refine config. Installation is defined (prompt-driven copy) and the repo is MIT-licensed. Two low-impact candidates remain in the backlog. Refine is dogfooding: this repository is its own first target.
+The skill lives at `.claude/skills/refine/SKILL.md` and is the single source of truth for the loop — CLAUDE.md defers to it. Its Analyze phase is driven by a lens catalog: a recon pass identifies what the repo is, selects only the applicable lenses, and reads the target's own CLAUDE.md/README for repo-specific values instead of any Refine config. The model mapping is real: three bundled agents (`.claude/agents/refine-*.md`) carry it. Installation is defined (prompt-driven copy) and the repo is MIT-licensed. `.refine/backlog.md` holds what's queued; `.refine/done.md` is the audit trail. Refine is dogfooding: this repository is its own first target.

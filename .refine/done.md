@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Fix the install path: the GitHub source URL 404s publicly
+
+- **type:** bug
+- **impact:** high — the README install prompt pointed fresh sessions at https://github.com/wpkita/refine, which returns 404 unauthenticated; the installation story was broken for any target session without repo access
+- **effort:** small
+- **resolution:** Executed the unilateral half: README's Installation section now states the access requirement honestly — the target session needs authenticated access to wpkita/refine, or a local clone to copy from, until the repo is public. The other half is the user's call, not Refine's: making the repo public is an ownership/visibility decision the loop must not take unilaterally, so it is surfaced as an explicit ask in the run summary. Once the repo is public, the caveat sentence should be deleted (doc-drift lens will catch it if forgotten).
+
 ### Validate the install prompt end-to-end in a scratch target repo
 
 - **type:** feature

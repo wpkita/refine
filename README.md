@@ -59,7 +59,7 @@ Refine is flat files, so installation is copying them — driven by a prompt, no
 
 > Install Refine: copy `.claude/skills/refine/SKILL.md` and `.claude/agents/refine-*.md` from https://github.com/wpkita/refine, seed empty `.refine/backlog.md` and `.refine/done.md`, and commit.
 
-The skill's Analyze phase populates the empty backlog on first run. Caveat: this repo is not publicly readable yet, so the target session needs authenticated GitHub access to wpkita/refine — or a local clone to copy from — until the repo is made public. Plugin-marketplace distribution may come later if the skill outgrows a single file.
+The skill's Analyze phase populates the empty backlog on first run. Plugin-marketplace distribution may come later if the skill outgrows a single file.
 
 ## Documentation Convention
 

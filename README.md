@@ -22,7 +22,7 @@ stateDiagram-v2
     Analyze --> [*]: only low-impact candidates — diminishing returns
     Execute --> Record: move item to done.md, commit iteration
     Record --> Checkpoint
-    Checkpoint --> Select: continue (default when unattended)
+    Checkpoint --> Select: continue — unattended runs never ask, interruption is the checkpoint
     Checkpoint --> Select: user adds item — Refine slots it by judgment
     Checkpoint --> [*]: user stops
 ```

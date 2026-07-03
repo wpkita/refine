@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Update the state diagram's checkpoint wording
+
+- **type:** bug
+- **impact:** low — the README diagram's "continue (default when unattended)" edge predated the interruption-is-the-checkpoint mechanism; slightly stale, not wrong
+- **effort:** small
+- **resolution:** Reworded the Checkpoint→Select edge to "continue — unattended runs never ask, interruption is the checkpoint," matching SKILL.md step 6 and the Backlog section's prose.
+
 ### Fix the install path: the GitHub source URL 404s publicly
 
 - **type:** bug

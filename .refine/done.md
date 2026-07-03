@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Deduplicate the loop: CLAUDE.md defers to SKILL.md
+
+- **type:** bug
+- **impact:** medium — CLAUDE.md's Bootup/Between-Work-Items sections predated the skill and had already diverged from it (no stopping criterion, no resolution requirement, no model mapping); two sources of truth guarantee future drift
+- **effort:** small
+- **resolution:** CLAUDE.md now keeps only the repo imperatives and a bootup trigger pointing at `.claude/skills/refine/SKILL.md`, which is declared the single source of truth for the loop. Found by this iteration's doc-drift check; executed immediately, so it never sat in backlog.md.
+
 ### Define the installation story
 
 - **type:** feature

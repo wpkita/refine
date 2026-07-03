@@ -68,4 +68,4 @@ This README is context. [CLAUDE.md](CLAUDE.md) is imperatives and directions.
 
 ## Current State
 
-The skill is scaffolded at `.claude/skills/refine/SKILL.md` and encodes the loop, backlog format, checkpoint, analysis phase, stopping criterion, and model selection. Installation is defined (prompt-driven copy). The backlog is empty — the next session's Analyze pass repopulates it. Refine is dogfooding: this repository is its own first target.
+The skill is scaffolded at `.claude/skills/refine/SKILL.md` and is the single source of truth for the loop — CLAUDE.md defers to it. Installation is defined (prompt-driven copy). The backlog holds analysis-pass candidates (license, unattended-checkpoint mechanism). Refine is dogfooding: this repository is its own first target.

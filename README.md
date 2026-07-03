@@ -68,4 +68,4 @@ This README is context. [CLAUDE.md](CLAUDE.md) is imperatives and directions.
 
 ## Current State
 
-The skill is scaffolded at `.claude/skills/refine/SKILL.md` and is the single source of truth for the loop — CLAUDE.md defers to it. Installation is defined (prompt-driven copy) and the repo is MIT-licensed. The backlog is empty — the next session's Analyze pass repopulates it. Refine is dogfooding: this repository is its own first target.
+The skill is scaffolded at `.claude/skills/refine/SKILL.md` and is the single source of truth for the loop — CLAUDE.md defers to it. Installation is defined (prompt-driven copy) and the repo is MIT-licensed. The last run stopped on diminishing returns, leaving two low-impact candidates in the backlog. Refine is dogfooding: this repository is its own first target.

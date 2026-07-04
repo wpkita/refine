@@ -6,7 +6,7 @@ Refine is packaged as a Claude Code skill: it gets imported into a target reposi
 
 ## The Core Loop
 
-1. Run deterministic and non-deterministic, quantitative and qualitative analyses on the target repository, chosen from a lens catalog scoped to what the repo actually is, and graded against a ranked 50-rung maturity ladder (see the skill's Analysis Phase and `maturity.md`).
+1. Run deterministic and non-deterministic, quantitative and qualitative analyses on the target repository, chosen from a lens catalog scoped to what the repo actually is, and graded against a ranked maturity ladder — `maturity.md`, a living document and the source of truth for prioritization (see the skill's Analysis Phase).
 2. Choose the single biggest bang-for-the-buck improvement.
 3. Apply that one improvement.
 4. Repeat until diminishing returns are detected or the user stops it.
@@ -67,4 +67,4 @@ This README is context. [CLAUDE.md](CLAUDE.md) is imperatives and directions.
 
 ## Current State
 
-The skill lives at `.claude/skills/refine/` (SKILL.md plus the maturity ladder in maturity.md) and is the single source of truth for the loop — CLAUDE.md defers to it. Its Analyze phase is driven by a lens catalog: a recon pass identifies what the repo is, selects only the applicable lenses, and reads the target's own CLAUDE.md/README for repo-specific values instead of any Refine config. Findings are priced by the ladder's tiers — Tier 0 gates (secrets, license, CVEs) outrank everything, and enforcement beats documentation. The model mapping is real: three bundled agents (`.claude/agents/refine-*.md`) carry it. Installation is defined (prompt-driven copy) and the repo is MIT-licensed. `.refine/backlog.md` holds what's queued; `.refine/done.md` is the audit trail. Refine is dogfooding: this repository is its own first target.
+The skill lives at `.claude/skills/refine/` (SKILL.md plus the maturity ladder in maturity.md) and is the single source of truth for the loop — CLAUDE.md defers to it. Its Analyze phase is driven by a lens catalog: a recon pass identifies what the repo is, selects only the applicable lenses, and reads the target's own CLAUDE.md/README for repo-specific values instead of any Refine config. Findings are priced by the tiers of the maturity ladder — the source of truth for prioritization — where Tier 0 gates (secrets, license, CVEs) outrank everything and enforcement beats documentation. The model mapping is real: three bundled agents (`.claude/agents/refine-*.md`) carry it. Installation is defined (prompt-driven copy) and the repo is MIT-licensed. `.refine/backlog.md` holds what's queued; `.refine/done.md` is the audit trail. Refine is dogfooding: this repository is its own first target.

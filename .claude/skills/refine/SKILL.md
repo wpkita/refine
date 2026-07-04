@@ -42,13 +42,13 @@ Run when the backlog is empty, or when instructed to refresh it.
 | Missing DB indexes | Schema vs. query patterns | The repo owns a database schema | Index what queries filter and join on |
 | Architecture / readability | Judgment pass over core or recently-touched files | Always | Code is read more than written |
 | Gap analysis | Decisions without artifacts; principles without mechanisms | Always | A stated principle with no mechanism is a bug in the project, not the prose |
-| Maturity ladder | Walk the ranked checklist in [maturity.md](maturity.md) top-down; report gaps with tier and rung | Always — community rungs only when the repo has outside users or contributors | Rank is the opinion: catastrophe > velocity > aesthetics; where a rung overlaps another lens, that lens is the check and the ladder supplies the rank |
+| Maturity ladder | Walk the ranked checklist in [maturity.md](maturity.md) top-down; report gaps with tier and rung | Always — community rungs rank lower (never zero) without outside users or contributors | Rank is the opinion: catastrophe > velocity > aesthetics; where a rung overlaps another lens, that lens is the check and the ladder supplies the rank |
 
 Lenses surface candidates; they never set priority. The scoring rubric prices every finding, which is what makes subjective lenses safe — a finding that isn't really a problem in this repo scores low and sinks. The catalog is a floor, not a ceiling: recon may improvise a repo-specific lens when the repo's nature demands one.
 
 **Scoring rubric.** Rate each candidate's `impact` (high/medium/low — user-visible value, or how much it unblocks future iterations) and `effort` (small/medium/large — expected size of the iteration). Qualitative ratings only; numeric scores are false precision. Priority order: impact first, lower effort breaks ties, bugs beat features on equal footing. An item too large for one iteration must be split before it enters the backlog.
 
-Three rules from [maturity.md](maturity.md) bind all scoring, not just ladder findings:
+[maturity.md](maturity.md) is the **source of truth for prioritization** — when it disagrees with any other signal about what matters most, it wins. Three of its rules bind all scoring, not just ladder findings:
 
 - **Gates, not points.** A failing Tier 0 gate (committed secret, no license, known high/critical CVE) is a high-impact `type: bug` that goes to the top of the backlog; no other candidate outranks it.
 - **Tier anchors impact.** Ladder gaps default to impact by tier — Tier 1 high, Tier 2 medium, Tiers 3–4 low-to-medium — then adjust for this repo's type and stated values.

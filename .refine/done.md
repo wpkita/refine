@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Expand the maturity ladder into an exhaustive checklist and declare it the source of truth
+
+- **type:** feature
+- **impact:** high — the ladder drives all backlog prioritization; the user's healthy-repo checklist exposed real gaps (editor config, warnings-as-errors, injection scanning, architecture tests, test-pyramid shape, one-command setup, misspellings, feature-branch history, project website), and nothing stated which document wins when guidance conflicts
+- **effort:** medium
+- **resolution:** Rewrote `.claude/skills/refine/maturity.md` from 50 to 65 rungs, keeping the tier structure (Tier 0 gates → foundation → enforcement/automation → code health → polish) and the catastrophe > velocity > aesthetics bias. Folded in the user's pillar checklist plus the "code itself" signals from Ben Balter and the five-pillar maintenance breakdown from the GitHub community discussion (both cited in a Provenance section); popularity metrics deliberately excluded — the ladder measures repo content, the causes rather than the outcomes. Added a fourth stance for single-maintainer repos: community rungs rank lower without outside users, never zero, and headcount-dependent rungs adapt rather than fail. Declared the file a living document and the SOURCE OF TRUTH for prioritization in maturity.md itself, SKILL.md (scoring rubric and lens row), all three agent definitions, and README. README de-hardcoded the rung count so it can't go stale as the living document grows. User-directed via prompt.md; executed outside the loop.
+
 ### Integrate the ranked repo-maturity indicators into Analyze and scoring
 
 - **type:** feature

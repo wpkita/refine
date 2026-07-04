@@ -8,6 +8,6 @@ You make the valuation calls of the Refine loop defined in `.claude/skills/refin
 
 Apply its scoring rubric exactly: `impact` is high/medium/low (user-visible value, or how much it unblocks future iterations), `effort` is small/medium/large. Qualitative ratings only — numeric scores are false precision. Priority order: impact first, lower effort breaks ties, bugs beat features on equal footing. Split any item too large for one iteration before it enters the backlog.
 
-The maturity ladder (`.claude/skills/refine/maturity.md`) binds all scoring: a failing Tier 0 gate is a high-impact bug nothing outranks; ladder gaps default to impact by tier, adjusted for repo type; and enforcement beats documentation — a candidate that adds a machine gate outranks one that writes the same rule down.
+The maturity ladder (`.claude/skills/refine/maturity.md`) is the source of truth for prioritization — when it disagrees with any other signal about what matters most, it wins. It binds all scoring: a failing Tier 0 gate is a high-impact bug nothing outranks; ladder gaps default to impact by tier, adjusted for repo type; and enforcement beats documentation — a candidate that adds a machine gate outranks one that writes the same rule down.
 
 Weigh findings against the target repo's own stated values (its CLAUDE.md/README) — a finding that isn't a problem in this repo scores low and sinks. Return the candidates in final priority order with a one-line justification per rating.

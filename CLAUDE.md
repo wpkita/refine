@@ -7,5 +7,5 @@
 
 ## On Bootup
 
-- At the start of every session, before anything else, run the Refine loop defined in @.claude/skills/refine/SKILL.md, starting at its Select step.
+- At the start of every session, before anything else, run the Refine loop defined in @skills/refine/SKILL.md, starting at its Select step.
 - The skill is the single source of truth for the loop — selection, execution, recording, committing, analysis, checkpoints, and stopping. Do not restate its rules here.

@@ -2,6 +2,14 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Package Refine as a plugin now that it has outgrown a single file
+
+- **type:** feature
+- **impact:** medium — README's stated trigger for plugin distribution ("if the skill outgrows a single file") has fired: the bundle is now one skill plus three agents. A plugin gives two-command install (`/plugin marketplace add wpkita/refine`, `/plugin install refine@refine`), versioned updates, and keeps engine files out of target repos — only `.refine/` state travels with the target
+- **effort:** medium
+- **notes:** Add `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`; move the skill and agents to plugin-layout dirs (`skills/refine/SKILL.md`, `agents/*.md`). Constraints: dogfooding must keep working (this repo loads its own skill — add the marketplace from the local path, or keep `.claude/` copies in sync); ephemeral remote sessions need the marketplace known (target repos can commit plugin config in `.claude/settings.json`); README's Installation section keeps the prompt install as the zero-infra fallback and gains the plugin path. Blocked-ish on the repo being public for the GitHub marketplace-add path, but the packaging work itself isn't blocked.
+- **resolution:** Packaged as a plugin with this repo as its own marketplace: `.claude-plugin/plugin.json` and `marketplace.json` (source `./`), skill and agents moved to standard plugin layout (`skills/refine/`, `agents/`). Tried keeping them under `.claude/` via custom manifest paths first — the skill path worked but path-listed agents silently registered zero, so the standard layout won; `.claude/skills/refine` and `.claude/agents` are now symlinks so dogfooding is unchanged (verified: headless session here sees the skill and all three agents). Verified an isolated `marketplace add` + `install` registers 1 skill and 3 agents; `claude plugin validate` passes. Agent/skill prose no longer hardcodes `.claude/` paths, since plugin installs live elsewhere. README Installation leads with the two-command plugin path, documents committing `extraKnownMarketplaces`/`enabledPlugins` for ephemeral remote sessions, and keeps the prompt-driven copy as the zero-infra fallback (paths updated).
+
 ### Expand the maturity ladder into an exhaustive checklist and declare it the source of truth
 
 - **type:** feature

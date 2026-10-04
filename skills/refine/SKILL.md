@@ -71,7 +71,7 @@ Items in `.refine/backlog.md` are titled `###` headings — no numbering; file o
 
 ## Model Selection
 
-When delegating, use the bundled agents in `.claude/agents/` — their frontmatter carries the model mapping:
+When delegating, use the bundled `refine-*` agents — their frontmatter carries the model mapping:
 
 | Task | Agent | Model |
 | --- | --- | --- |

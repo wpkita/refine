@@ -1,0 +1,16 @@
+{
+  "name": "refine",
+  "owner": {
+    "name": "Will Kita"
+  },
+  "metadata": {
+    "description": "Refine: an autonomous, opinionated repository-improvement loop for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "refine",
+      "source": "./",
+      "description": "Iteratively improve a repository, one focused change per iteration."
+    }
+  ]
+}

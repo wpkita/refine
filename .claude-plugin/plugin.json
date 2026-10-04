@@ -1,0 +1,10 @@
+{
+  "name": "refine",
+  "version": "0.1.0",
+  "description": "Iteratively improve a repository: analyze it, pick the single biggest bang-for-the-buck improvement, apply it, repeat.",
+  "author": {
+    "name": "Will Kita"
+  },
+  "repository": "https://github.com/wpkita/refine",
+  "license": "MIT"
+}

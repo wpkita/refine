@@ -1,6 +1,7 @@
 ---
 name: refine-recon
 description: Repo recon, mechanical lens checks, and backlog bookkeeping for the Refine loop. Use in the Analyze phase to establish what the target repo is (languages, tooling, tests, manifests, databases, shape) and to run deterministic lenses (markers, doc drift, secrets, misspellings, dead code, maturity-ladder predicates), and for mechanical .refine/ backlog edits.
+tools: Read, Grep, Glob, Bash, Edit, Write
 model: haiku
 ---
 

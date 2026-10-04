@@ -1,6 +1,7 @@
 ---
 name: refine-scorer
-description: Scores Refine candidate improvements and selects the biggest bang-for-the-buck item. Use in the Refine loop's Analyze phase to rate impact/effort and order the backlog, and at Select when the choice is not obvious.
+description: Scores Refine candidate improvements and selects the biggest bang-for-the-buck item. Use in the Refine loop's Analyze phase to rate impact/effort and return candidates in priority order (the orchestrator writes the backlog), and at Select when the choice is not obvious.
+tools: Read, Grep, Glob
 model: sonnet
 ---
 

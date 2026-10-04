@@ -2,7 +2,7 @@
 
 Refine is a tool/skill/methodology for iteratively improving a repository. For now, this will focus on code, but the idea is you use Refine on a repository you own and leave it to improve it automatically and agentically in an opinionated way.
 
-Refine is packaged as a Claude Code plugin — one skill plus three model-pinned agents — whose only footprint in a target repository is the `.refine/` backlog; it autonomously improves that repository in a loop, in the spirit of [karpathy/autoresearch](https://github.com/karpathy/autoresearch). Refine is also used to refine itself — this repository is its own first target.
+Refine is packaged as a Claude Code plugin — one skill plus four model-pinned agents — whose only footprint in a target repository is the `.refine/` backlog; it autonomously improves that repository in a loop, in the spirit of [karpathy/autoresearch](https://github.com/karpathy/autoresearch). Refine is also used to refine itself — this repository is its own first target.
 
 ## The Core Loop
 
@@ -32,6 +32,7 @@ stateDiagram-v2
 - **One improvement per iteration.** Each loop cycle produces exactly one focused change, not a batch.
 - **Opinionated.** Refine decides what "better" means; it does not ask the user to arbitrate every choice.
 - **Unattended operation is the primary use case.** The user installs Refine into a personal repo, starts a remote session (e.g., from a phone), and walks away while the agent loops. Anything requiring the user to sit at a computer defeats the purpose.
+- **Verified, not asserted.** Every iteration runs a check that returns pass/fail and gets a fresh-context review of its diff before it commits — an unattended loop has no human to notice "looks done" isn't done.
 - **Knows when to stop.** Diminishing returns are a first-class stopping criterion, not an afterthought.
 
 ## Model Selection
@@ -43,6 +44,7 @@ Cheap models do the mechanical work that happens constantly; strong models make 
 | Repo recon, mechanical lens checks, backlog bookkeeping | `refine-recon` | Haiku |
 | Candidate scoring and improvement selection | `refine-scorer` | Sonnet |
 | Implementing the improvement | orchestrating session | session default |
+| Fresh-context review of each iteration's diff | `refine-reviewer` | Sonnet |
 | Diminishing-returns evaluation | `refine-stopper` | Opus |
 
 The mapping lives in per-agent frontmatter (`model:` field) in `agents/refine-*.md`, which install alongside the skill; the orchestrating loop inherits the session model.
@@ -76,4 +78,4 @@ This README is context. [CLAUDE.md](CLAUDE.md) is imperatives and directions.
 
 ## Current State
 
-The skill lives at `skills/refine/` (SKILL.md plus the maturity ladder in maturity.md) in standard plugin layout, with `.claude-plugin/` holding the plugin and marketplace manifests; `.claude/skills/refine` and `.claude/agents` are symlinks so this repo loads its own copy. The skill is the single source of truth for the loop — CLAUDE.md defers to it. Its Analyze phase is driven by a lens catalog: a recon pass identifies what the repo is, selects only the applicable lenses, and reads the target's own CLAUDE.md/README for repo-specific values instead of any Refine config. Findings are priced by the tiers of the maturity ladder — the source of truth for prioritization — where Tier 0 gates (secrets, license, CVEs) outrank everything and enforcement beats documentation. The model mapping is real: three bundled agents (`agents/refine-*.md`) carry it. Installation is defined (plugin, or prompt-driven copy) and the repo is MIT-licensed. `.refine/backlog.md` holds what's queued; `.refine/done.md` is the audit trail. Refine is dogfooding: this repository is its own first target.
+The skill lives at `skills/refine/` (SKILL.md plus the maturity ladder in maturity.md) in standard plugin layout, with `.claude-plugin/` holding the plugin and marketplace manifests; `.claude/skills/refine` and `.claude/agents` are symlinks so this repo loads its own copy. The skill is the single source of truth for the loop — CLAUDE.md defers to it. Its Execute step verifies each change with a runnable check and a fresh-context review; this repo's check is `claude plugin validate .`. Its Analyze phase is driven by a lens catalog (including an agent-readiness lens built from [Claude Code's best practices](https://code.claude.com/docs/en/best-practices)): a recon pass identifies what the repo is, selects only the applicable lenses, and reads the target's own CLAUDE.md/README for repo-specific values instead of any Refine config. Findings are priced by the tiers of the maturity ladder — the source of truth for prioritization — where Tier 0 gates (secrets, license, CVEs) outrank everything and enforcement beats documentation. The model mapping is real: four bundled agents (`agents/refine-*.md`) carry it. Installation is defined (plugin, or prompt-driven copy) and the repo is MIT-licensed. `.refine/backlog.md` holds what's queued; `.refine/done.md` is the audit trail. Refine is dogfooding: this repository is its own first target.

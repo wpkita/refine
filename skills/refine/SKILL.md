@@ -7,10 +7,14 @@ description: Iteratively improve this repository - analyze it, pick the single b
 
 Improve this repository one focused change at a time, working from the priority-ordered backlog in `.refine/backlog.md`. Unattended operation is the primary use case: never block waiting on the user when a defensible default exists.
 
+Context is the scarce resource in a long loop. State lives in files and git, never in conversation: after each commit, nothing in context is needed to continue — re-read the backlog at Select. Keep exploration out of the main context by delegating recon and lens checks to subagents.
+
 ## The Loop
 
 1. **Select.** Read `.refine/backlog.md`. The topmost item is next. If the backlog is empty, run an analysis pass first (step 5) to populate it.
 2. **Execute.** Implement the item now, in this session. Do not merely read, restate, or analyze it. Exactly one item per iteration — never batch.
+   - **Verify.** Run the repo's own check (tests, build, linter, validator) and iterate until it passes; "looks done" is not a signal. If no check covers the change, create one when it fits in this iteration, otherwise queue it as a backlog item. Cite the evidence — the command and its result — in the resolution.
+   - **Review.** Before recording, have `refine-reviewer` review the diff in a fresh context against the item's notes. It flags only gaps affecting correctness or the item's stated scope; style preferences are optional, and chasing every finding is over-engineering.
 3. **Record.** Move the completed item from `.refine/backlog.md` to `.refine/done.md`, appending a `resolution:` line stating what was decided or built and why.
 4. **Commit.** One commit per iteration, containing the improvement and every backlog mutation it caused. Never add co-authoring; leave the user's configured Git name and email.
 5. **Analyze (as needed).** Run the Analysis Phase (below) and append its candidates to the backlog in priority order.
@@ -42,6 +46,7 @@ Run when the backlog is empty, or when instructed to refresh it.
 | Missing DB indexes | Schema vs. query patterns | The repo owns a database schema | Index what queries filter and join on |
 | Architecture / readability | Judgment pass over core or recently-touched files | Always | Code is read more than written |
 | Gap analysis | Decisions without artifacts; principles without mechanisms | Always | A stated principle with no mechanism is a bug in the project, not the prose |
+| Agent readiness | Read CLAUDE.md, `.claude/` skills, agents, and settings | Always — Refine itself runs as an agent | CLAUDE.md is short and holds only what code can't reveal: commands, gotchas, non-default rules; it names a check an agent can run; emphasis is reserved for the one rule that keeps getting skipped; rules that must always hold are hooks, not prose; agents get least-privilege `tools:` |
 | Maturity ladder | Walk the ranked checklist in [maturity.md](maturity.md) top-down; report gaps with tier and rung | Always — community rungs rank lower (never zero) without outside users or contributors | Rank is the opinion: catastrophe > velocity > aesthetics; where a rung overlaps another lens, that lens is the check and the ladder supplies the rank |
 
 Lenses surface candidates; they never set priority. The scoring rubric prices every finding, which is what makes subjective lenses safe — a finding that isn't really a problem in this repo scores low and sinks. The catalog is a floor, not a ceiling: recon may improvise a repo-specific lens when the repo's nature demands one.
@@ -78,4 +83,5 @@ When delegating, use the bundled `refine-*` agents — their frontmatter carries
 | Repo recon, mechanical lens checks, backlog bookkeeping | `refine-recon` | Haiku |
 | Candidate scoring and improvement selection | `refine-scorer` | Sonnet |
 | Implementing the improvement | orchestrating session | session default |
+| Fresh-context review of each iteration's diff | `refine-reviewer` | Sonnet |
 | Diminishing-returns evaluation | `refine-stopper` | Opus |

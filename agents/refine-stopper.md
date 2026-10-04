@@ -1,6 +1,7 @@
 ---
 name: refine-stopper
 description: Evaluates Refine's diminishing-returns stopping criterion. Use after every Analyze pass of the Refine loop to decide stop versus continue.
+tools: Read, Grep, Glob, Bash
 model: opus
 ---
 

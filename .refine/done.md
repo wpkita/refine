@@ -2,6 +2,13 @@
 
 Completed backlog items, most recent first. Moved here from [backlog.md](backlog.md).
 
+### Align the repo with Claude Code's published best practices
+
+- **type:** feature
+- **impact:** high — Refine is an unattended agent loop; the guide's core advice (a runnable check, fresh-context review, lean context, least-privilege subagents) is exactly what makes a walk-away session finish correctly
+- **effort:** medium
+- **resolution:** User-added at a checkpoint and executed first, since the user asked for it directly. Changes made against https://code.claude.com/docs/en/best-practices. CLAUDE.md: pruned to the rules code can't reveal. The three README bullets became one. Only the co-authoring rule is marked IMPORTANT, because the harness's attribution prompt keeps contradicting it. Bootup now invokes the skill instead of @-importing it, which avoided loading it twice. Added a Verify section naming `claude plugin validate .` as the repo's runnable check. SKILL.md: Execute now requires a passing check, with the command and result cited as evidence, and a fresh-context review that flags only correctness or scope gaps. Added a context-hygiene rule: state lives in files and git, and exploration is delegated to subagents. Added an Agent-readiness lens so Refine applies these practices to the repos it targets. Agents: each now has least-privilege `tools:`. Added a read-only `refine-reviewer` (Sonnet) after the review step's first run pointed out that no named reviewer meant an all-tools general-purpose agent. Also reworded the scorer's description, because it returns an order and does not write the backlog. Considered `disable-model-invocation: true` (the guide recommends it for skills with side effects) and rejected it, because CLAUDE.md's bootup and headless runs rely on Claude invoking the skill. Evidence: `claude plugin validate .` passes, with only the expected root-CLAUDE.md warning. An isolated install registers 1 skill and 4 agents.
+
 ### Package Refine as a plugin now that it has outgrown a single file
 
 - **type:** feature
